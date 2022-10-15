@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "289853012959",
+    "project_id": "seaddogshow",
+    "storage_bucket": "seaddogshow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289853012959:android:9f46167d8a63986e67626a",
+        "android_client_info": {
+          "package_name": "com.example.seaddogshow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289853012959-7t319dtaj23c6a265lne8nj67317s8h0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk6XDX5EwtEBXlhJCq4qus9cgjdHfQLAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289853012959-7t319dtaj23c6a265lne8nj67317s8h0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
