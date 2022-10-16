@@ -15,8 +15,8 @@
         android:layout_marginStart="16dp"
         android:text="name"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelName"
-        app:layout_constraintStart_toEndOf="@+id/listLabelName" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelTrainerName"
+        app:layout_constraintStart_toEndOf="@+id/listLabelTrainerName" />
 
     <TextView
         android:id="@+id/listItemTrainerCity"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="city"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelCountry"
+        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelTrainerCountry"
         app:layout_constraintStart_toStartOf="@+id/listItemTrainerName" />
 
     <TextView
@@ -33,11 +33,11 @@
         android:layout_height="wrap_content"
         android:text="club"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelClub"
+        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelTrainerClub"
         app:layout_constraintStart_toStartOf="@+id/listItemTrainerCity" />
 
     <TextView
-        android:id="@+id/listLabelName"
+        android:id="@+id/listLabelTrainerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -47,22 +47,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/listLabelCountry"
+        android:id="@+id/listLabelTrainerCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Country: "
-        app:layout_constraintStart_toStartOf="@+id/listLabelName"
-        app:layout_constraintTop_toBottomOf="@+id/listLabelName" />
+        app:layout_constraintStart_toStartOf="@+id/listLabelTrainerName"
+        app:layout_constraintTop_toBottomOf="@+id/listLabelTrainerName" />
 
     <TextView
-        android:id="@+id/listLabelClub"
+        android:id="@+id/listLabelTrainerClub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Club:"
-        app:layout_constraintStart_toStartOf="@+id/listLabelCountry"
-        app:layout_constraintTop_toBottomOf="@+id/listLabelCountry" />
+        app:layout_constraintStart_toStartOf="@+id/listLabelTrainerCountry"
+        app:layout_constraintTop_toBottomOf="@+id/listLabelTrainerCountry" />
 
     <!--<TextView
         android:id="@+id/listItemTrainerExp"

@@ -3,6 +3,7 @@ package com.example.seaddogshow;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +26,9 @@ public class InformationPage extends AppCompatActivity {
     Button btnShowTrainers;
     Button btnShowDogs;
     Button btnShowEvents;
+    Button btnGoHome;
     List<Trainer> trainerList;
+    List<Dogs> dogsList;
     //TextView listLabelName;
 
 
@@ -37,7 +40,17 @@ public class InformationPage extends AppCompatActivity {
         btnShowTrainers = findViewById(R.id.btnShowTrainers);
         lvInformation = findViewById(R.id.lvInformation);
         //listLabelName = findViewById(R.id.listLabelName);
+        btnShowDogs = findViewById(R.id.btnShowDogs);
+        btnShowEvents = findViewById(R.id.btnShowEvents);
+        btnGoHome = findViewById(R.id.btnGoHome);
 
+        btnGoHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InformationPage.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnShowTrainers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +83,36 @@ public class InformationPage extends AppCompatActivity {
             }
         });
 
+        btnShowDogs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dogsList = new ArrayList<>();
+
+                // Returns the database under the specified path
+                dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs");
+
+                dogShowDBRef.addValueEventListener((new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        dogsList.clear();
+
+                        // Iterate over the entries in the DB and add the values to a local list
+                        for (DataSnapshot dogsDataSnap : snapshot.getChildren()) {
+                            Dogs dogs = dogsDataSnap.getValue(Dogs.class);
+                            dogsList.add(dogs);
+                        }
+
+                        DogsListAdapter adapter = new DogsListAdapter(InformationPage.this, dogsList);
+                        lvInformation.setAdapter(adapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                }));
+            }
+        });
 
     }
 }

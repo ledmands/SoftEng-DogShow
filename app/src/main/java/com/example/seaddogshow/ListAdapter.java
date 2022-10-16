@@ -18,6 +18,7 @@ public class ListAdapter extends ArrayAdapter {
     List<Trainer> trainerList;
 
 
+
     public ListAdapter(Activity mActivity, List<Trainer> trainerList){
 
         super(mActivity, R.layout.list_item,trainerList); // uses the list_item layout

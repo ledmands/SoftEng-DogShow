@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/dogListLabelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Name:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dogListLabelBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Breed:"
+        app:layout_constraintStart_toStartOf="@+id/dogListLabelName"
+        app:layout_constraintTop_toBottomOf="@+id/dogListLabelName" />
+
+    <TextView
+        android:id="@+id/dogListLabelToy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Favorite Toy:"
+        app:layout_constraintStart_toStartOf="@+id/dogListLabelBreed"
+        app:layout_constraintTop_toBottomOf="@+id/dogListLabelBreed" />
+
+    <TextView
+        android:id="@+id/dogListLabelEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Events:"
+        app:layout_constraintStart_toStartOf="@+id/dogListLabelToy"
+        app:layout_constraintTop_toBottomOf="@+id/dogListLabelToy" />
+
+    <TextView
+        android:id="@+id/dogListItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="name"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelName"
+        app:layout_constraintStart_toEndOf="@+id/dogListLabelName" />
+
+    <TextView
+        android:id="@+id/dogListItemBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="breed"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelBreed"
+        app:layout_constraintStart_toEndOf="@+id/dogListLabelBreed" />
+
+    <TextView
+        android:id="@+id/dogListItemToy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="toy"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelToy"
+        app:layout_constraintStart_toEndOf="@+id/dogListLabelToy" />
+
+    <TextView
+        android:id="@+id/dogListItemEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="events"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelEvents"
+        app:layout_constraintStart_toEndOf="@+id/dogListLabelEvents" />
+</androidx.constraintlayout.widget.ConstraintLayout>
