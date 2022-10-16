@@ -2,6 +2,7 @@ package com.example.seaddogshow;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //Button btn_add_name;
     Button btnSubmitData;
     //ListView schedule;
+    Button btnSwitchPage;
 
     DatabaseReference dogShowDBRef;
 
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //btn_get_schedule = findViewById(R.id.btn_get_schedule);
         btnSubmitData = findViewById(R.id.btnSubmitData);
         //schedule = findViewById(R.id.schedule);
+        btnSwitchPage = findViewById(R.id.btnSwitchPage);
 
         //myRef.push().setValue("Hello World!");
 
@@ -55,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
                 insertTrainerName();
             }
         }));
+
+        btnSwitchPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
 
 /*        btn_get_schedule.setOnClickListener(new View.OnClickListener() {
             @Override

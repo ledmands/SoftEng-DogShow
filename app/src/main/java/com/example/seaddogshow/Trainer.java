@@ -7,6 +7,10 @@ public class Trainer {
     String organization;
     String about;
 
+    public Trainer() {
+        //stub
+    }
+
     public Trainer(String name, String town, String organization, String about) {
         this.name = name;
         this.town = town;

@@ -65,4 +65,14 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etTrainerName" />
+
+    <Button
+        android:id="@+id/btnSwitchPage"
+        android:layout_width="161dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:text="Switch Page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmitData" />
 </androidx.constraintlayout.widget.ConstraintLayout>
