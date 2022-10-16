@@ -67,11 +67,11 @@
         app:layout_constraintTop_toBottomOf="@+id/etTrainerName" />
 
     <Button
-        android:id="@+id/btnSwitchPage"
+        android:id="@+id/btnInformation"
         android:layout_width="161dp"
         android:layout_height="80dp"
         android:layout_marginTop="24dp"
-        android:text="Switch Page"
+        android:text="Information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSubmitData" />

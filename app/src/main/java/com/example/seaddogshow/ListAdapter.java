@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ListAdapter extends ArrayAdapter {
 
-    private Activity mActivity;
+    private final Activity mActivity;
     List<Trainer> trainerList;
 
 
@@ -34,17 +34,18 @@ public class ListAdapter extends ArrayAdapter {
         LayoutInflater inflater = mActivity.getLayoutInflater();
         View listItemView = inflater.inflate(R.layout.list_item, null, true);
 
-        TextView lvName = listItemView.findViewById(R.id.lvName);
-        TextView lvTown = listItemView.findViewById(R.id.lvTown);
-        TextView lvOrg = listItemView.findViewById(R.id.lvOrg);
-        TextView lvAbout = listItemView.findViewById(R.id.lvAbout);
+        TextView trainerName = listItemView.findViewById(R.id.listItemTrainerName);
+        TextView trainerCity = listItemView.findViewById(R.id.listItemTrainerCity);
+        TextView trainerClub = listItemView.findViewById(R.id.listItemTrainerClub);
+        //TextView trainerExp = listItemView.findViewById(R.id.listItemTrainerExp);
 
         Trainer trainer = trainerList.get(position);
 
-        lvName.setText(trainer.getName());
-        lvTown.setText(trainer.getTown());
-        lvOrg.setText(trainer.getOrganization());
-        lvAbout.setText(trainer.getAbout());
+        trainerName.setText(trainer.getName());
+        trainerCity.setText(trainer.getCity());
+        trainerClub.setText(trainer.getClub());
+        //trainerExp.setText(trainer.getYearsExperience());
+        //trainerExp.setText(trainer.getYearsExp());
 
         return listItemView;
     }

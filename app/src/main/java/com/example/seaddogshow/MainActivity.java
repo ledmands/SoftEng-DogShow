@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //Button btn_add_name;
     Button btnSubmitData;
     //ListView schedule;
-    Button btnSwitchPage;
+    Button btnInformation;
 
     DatabaseReference dogShowDBRef;
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //btn_get_schedule = findViewById(R.id.btn_get_schedule);
         btnSubmitData = findViewById(R.id.btnSubmitData);
         //schedule = findViewById(R.id.schedule);
-        btnSwitchPage = findViewById(R.id.btnSwitchPage);
+        btnInformation = findViewById(R.id.btnInformation);
 
         //myRef.push().setValue("Hello World!");
 
@@ -59,51 +59,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
 
-        btnSwitchPage.setOnClickListener(new View.OnClickListener() {
+        btnInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                Intent intent = new Intent(MainActivity.this, InformationPage.class);
                 startActivity(intent);
             }
         });
 
-/*        btn_get_schedule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // do shit
-
-                //final TextView textView = (TextView) findViewById(R.id.text);
-                // ...
-
-                // Instantiate the RequestQueue.
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                String url = "https://www.google.com";
-
-                // Request a string response from the provided URL.
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                // Display the first 500 characters of the response string.
-                                textView.setText("Response is: " + response.substring(0,500));
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("That didn't work!");
-                    }
-                });
-
-// Add the request to the RequestQueue.
-                queue.add(stringRequest);
 
 
-            }
 
-        });
-
-    }
-*/
 
 
     } //end OnCreate
@@ -114,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
         String name = etTrainerName.getText().toString();
         String town = etTrainerTown.getText().toString();
         String org = etTrainerOrg.getText().toString();
-        String about = etTrainerAbout.getText().toString();
+        String yearsExp = etTrainerAbout.getText().toString();
         // Any other information to add, like dog names, breed, hometown, etc, could go here.
 
         // Create new Trainers object
-        Trainer trainer = new Trainer(name, town, org, about);
+        Trainer trainer = new Trainer(name, town, org);
 
         // Push object to the DB, .push() generates a unique ID so that records will not be overwritten
         dogShowDBRef.push().setValue(trainer);

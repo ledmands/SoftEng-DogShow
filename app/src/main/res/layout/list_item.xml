@@ -9,47 +9,70 @@
     android:padding="5dp">
 
     <TextView
-        android:id="@+id/lvName"
-        android:layout_width="55dp"
-        android:layout_height="24dp"
+        android:id="@+id/listItemTrainerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="name"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelName"
+        app:layout_constraintStart_toEndOf="@+id/listLabelName" />
+
+    <TextView
+        android:id="@+id/listItemTrainerCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="city"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelCountry"
+        app:layout_constraintStart_toStartOf="@+id/listItemTrainerName" />
+
+    <TextView
+        android:id="@+id/listItemTrainerClub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="club"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/listLabelClub"
+        app:layout_constraintStart_toStartOf="@+id/listItemTrainerCity" />
+
+    <TextView
+        android:id="@+id/listLabelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Name: "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lvTown"
-        android:layout_width="70dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:text="town"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/lvName"
-        app:layout_constraintStart_toEndOf="@+id/lvName" />
+        android:id="@+id/listLabelCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Country: "
+        app:layout_constraintStart_toStartOf="@+id/listLabelName"
+        app:layout_constraintTop_toBottomOf="@+id/listLabelName" />
 
     <TextView
-        android:id="@+id/lvOrg"
-        android:layout_width="100dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:text="organization"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/lvTown"
-        app:layout_constraintStart_toEndOf="@+id/lvTown" />
+        android:id="@+id/listLabelClub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Club:"
+        app:layout_constraintStart_toStartOf="@+id/listLabelCountry"
+        app:layout_constraintTop_toBottomOf="@+id/listLabelCountry" />
 
-    <TextView
-        android:id="@+id/lvAbout"
-        android:layout_width="110dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="about"
+    <!--<TextView
+        android:id="@+id/listItemTrainerExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="years exp"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/lvOrg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lvOrg" />
+        app:layout_constraintStart_toStartOf="@+id/listItemTrainerClub"
+        app:layout_constraintTop_toBottomOf="@+id/listItemTrainerClub" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
