@@ -6,73 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/etTrainerAbout"
-        android:layout_width="229dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="About"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTrainerOrg" />
-
-    <EditText
-        android:id="@+id/etTrainerOrg"
-        android:layout_width="232dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Organization"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTrainerTown" />
-
     <Button
-        android:id="@+id/btnSubmitData"
-        android:layout_width="170dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="24dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTrainerAbout" />
-    <EditText
-        android:id="@+id/etTrainerName"
-        android:layout_width="227dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
+        android:id="@+id/btnInformation"
+        android:layout_width="205dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="150dp"
+        android:text="Information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etTrainerTown"
-        android:layout_width="232dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Town"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTrainerName" />
+    <Button
+        android:id="@+id/btnAdmin"
+        android:layout_width="208dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="24dp"
+        android:text="Admin"
+        app:layout_constraintStart_toStartOf="@+id/btnTickets"
+        app:layout_constraintTop_toBottomOf="@+id/btnTickets" />
 
     <Button
-        android:id="@+id/btnInformation"
-        android:layout_width="161dp"
-        android:layout_height="80dp"
+        android:id="@+id/btnTickets"
+        android:layout_width="204dp"
+        android:layout_height="82dp"
         android:layout_marginTop="24dp"
-        android:text="Information"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSubmitData" />
+        android:text="Tickets"
+        app:layout_constraintStart_toStartOf="@+id/btnInformation"
+        app:layout_constraintTop_toBottomOf="@+id/btnInformation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

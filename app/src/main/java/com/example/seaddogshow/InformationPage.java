@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.metrics.Event;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ public class InformationPage extends AppCompatActivity {
     Button btnGoHome;
     List<Trainer> trainerList;
     List<Dogs> dogsList;
+    List<Events> eventList;
     //TextView listLabelName;
 
 
@@ -39,7 +41,6 @@ public class InformationPage extends AppCompatActivity {
 
         btnShowTrainers = findViewById(R.id.btnShowTrainers);
         lvInformation = findViewById(R.id.lvInformation);
-        //listLabelName = findViewById(R.id.listLabelName);
         btnShowDogs = findViewById(R.id.btnShowDogs);
         btnShowEvents = findViewById(R.id.btnShowEvents);
         btnGoHome = findViewById(R.id.btnGoHome);
@@ -103,6 +104,37 @@ public class InformationPage extends AppCompatActivity {
                         }
 
                         DogsListAdapter adapter = new DogsListAdapter(InformationPage.this, dogsList);
+                        lvInformation.setAdapter(adapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                }));
+            }
+        });
+
+        btnShowEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eventList = new ArrayList<>();
+
+                // Returns the database under the specified path
+                dogShowDBRef = FirebaseDatabase.getInstance().getReference("events");
+
+                dogShowDBRef.addValueEventListener((new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        eventList.clear();
+
+                        // Iterate over the entries in the DB and add the values to a local list
+                        for (DataSnapshot eventDataSnap : snapshot.getChildren()) {
+                            Events events = eventDataSnap.getValue(Events.class);
+                            eventList.add(events);
+                        }
+
+                        EventListAdapter adapter = new EventListAdapter(InformationPage.this, eventList);
                         lvInformation.setAdapter(adapter);
                     }
 
