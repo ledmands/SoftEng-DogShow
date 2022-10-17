@@ -41,9 +41,9 @@ public class DogsListAdapter extends ArrayAdapter {
 
         Dogs dogs = dogsList.get(position);
 
-        dogName.setText(dogs.getDogName());
+        dogName.setText(dogs.getName());
         dogBreed.setText(dogs.getBreed());
-        dogFavoriteToy.setText(dogs.getFavoriteToy());
+        dogFavoriteToy.setText(dogs.getFavorite_Toy());
         dogEvents.setText(dogs.getEvents());
 
         return listItemView;

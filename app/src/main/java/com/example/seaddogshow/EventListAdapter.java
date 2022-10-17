@@ -46,8 +46,8 @@ public class EventListAdapter extends ArrayAdapter {
 
         Events events = eventList.get(position);
 
-        event.setText(events.getEventEvent());
-        day.setText(events.getEventDay());
+        event.setText(events.getEvent());
+        day.setText(events.getDay());
 
 
         return listItemView;

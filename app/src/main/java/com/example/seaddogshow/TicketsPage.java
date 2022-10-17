@@ -1,5 +1,7 @@
 package com.example.seaddogshow;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,19 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class TicketsPage extends AppCompatActivity {
-
     private static final String TAG = "TicketsPage";
 
 
@@ -32,11 +25,10 @@ public class TicketsPage extends AppCompatActivity {
     EditText etTicketsName;
     EditText etTicketsNum;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tickets_page);
+        setContentView(R.layout.activity_tickets_page);
 
         etTicketsNum = findViewById(R.id.etTicketsNum);
         etTicketsName = findViewById(R.id.etTicketsName);
@@ -44,11 +36,12 @@ public class TicketsPage extends AppCompatActivity {
         etTicketsEmail = findViewById(R.id.etTicketsEmail);
         btnTicketsSubmit = findViewById(R.id.btnTicketsSubmit);
         btnTicketsBack = findViewById(R.id.btnTicketsBack);
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference().child("tickets");
 
         btnTicketsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TicketsPage.this, InformationPage.class);
+                Intent intent = new Intent(com.example.seaddogshow.TicketsPage.this, InformationPage.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +50,6 @@ public class TicketsPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 insertTicketInfo();
-                etTicketsNum.clearComposingText();
             }
         });
 
@@ -76,11 +68,10 @@ public class TicketsPage extends AppCompatActivity {
         //CreatenewTrainersobject
         TicketRequest ticketrequest = new TicketRequest(ticketsName, numTickets, creditCard, email);
 
-//PushobjecttotheDB,.push()generatesauniqueIDsothatrecordswillnotbeoverwritten
         dogShowDBRef.push().setValue(ticketrequest);
-        Toast.makeText(TicketsPage.this, "Ticket request submitted. Thank you!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(com.example.seaddogshow.TicketsPage.this, "Ticket request submitted. Thank you!", Toast.LENGTH_SHORT).show();
 
 
     }
-
 }
+

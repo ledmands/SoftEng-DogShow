@@ -50,7 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="name"
         app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelName"
         app:layout_constraintStart_toEndOf="@+id/dogListLabelName" />
 
@@ -59,7 +58,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="breed"
         app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelBreed"
         app:layout_constraintStart_toEndOf="@+id/dogListLabelBreed" />
 
@@ -68,7 +66,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="toy"
         app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelToy"
         app:layout_constraintStart_toEndOf="@+id/dogListLabelToy" />
 
@@ -77,7 +74,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="events"
         app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelEvents"
         app:layout_constraintStart_toEndOf="@+id/dogListLabelEvents" />
 </androidx.constraintlayout.widget.ConstraintLayout>

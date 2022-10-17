@@ -18,7 +18,7 @@ public class Dogs {
         this.events = events;
     }
 
-    public String getDogName() {
+    public String getName() {
         return name;
     }
 
@@ -26,7 +26,7 @@ public class Dogs {
         return breed;
     }
 
-    public String getFavoriteToy() {
+    public String getFavorite_Toy() {
         return favorite_toy;
     }
 

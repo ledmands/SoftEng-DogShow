@@ -9,18 +9,18 @@
         android:id="@+id/listItemScheduleEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="100dp"
         android:text="event"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/listItemScheduleDay"
+        app:layout_constraintStart_toStartOf="@+id/listItemScheduleDay" />
 
     <TextView
         android:id="@+id/listItemScheduleDay"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="day"
-        app:layout_constraintBaseline_toBaselineOf="@+id/listItemScheduleEvent"
-        app:layout_constraintStart_toEndOf="@+id/listItemScheduleEvent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

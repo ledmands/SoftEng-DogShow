@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".TicketsPage">
 
     <EditText
         android:id="@+id/etTicketsName"
@@ -11,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Name on card"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="@+id/etTicketsCC"
         app:layout_constraintTop_toBottomOf="@+id/etTicketsCC" />
 
@@ -22,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:ems="10"
+        android:hint="Number of Tickets"
         android:inputType="textPersonName"
-        android:text="num tix"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Credit Card"
         android:inputType="textPersonName"
-        android:text="CC num"
         app:layout_constraintStart_toStartOf="@+id/etTicketsNum"
         app:layout_constraintTop_toBottomOf="@+id/etTicketsNum" />
 
@@ -65,8 +66,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Contact Email"
         android:inputType="textPersonName"
-        android:text="email"
         app:layout_constraintStart_toStartOf="@+id/etTicketsName"
         app:layout_constraintTop_toBottomOf="@+id/etTicketsName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

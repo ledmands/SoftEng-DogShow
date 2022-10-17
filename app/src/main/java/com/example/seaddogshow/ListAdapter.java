@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class ListAdapter extends ArrayAdapter {
-
     private final Activity mActivity;
     List<Trainer> trainerList;
 

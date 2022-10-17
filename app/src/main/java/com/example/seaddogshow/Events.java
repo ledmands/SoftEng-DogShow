@@ -16,11 +16,11 @@ public class Events {
         //this.day = day;
     }
 
-    public String getEventDay() {
+    public String getDay() {
         return day;
     }
 
-    public String getEventEvent() {
+    public String getEvent() {
         return event;
     }
 
