@@ -41,7 +41,7 @@ public class TicketsPage extends AppCompatActivity {
         btnTicketsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(com.example.seaddogshow.TicketsPage.this, InformationPage.class);
+                Intent intent = new Intent(TicketsPage.this, MainActivity.class);
                 startActivity(intent);
             }
         });

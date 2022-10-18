@@ -31,7 +31,6 @@ public class InformationPage extends AppCompatActivity {
     List<Trainer> trainerList;
     List<Dogs> dogsList;
     List<Events> eventList;
-    //TextView listLabelName;
 
 
     @Override
