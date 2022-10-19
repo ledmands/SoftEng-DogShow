@@ -39,6 +39,8 @@ public class AdminPage extends AppCompatActivity {
     Button btnAdminEditDogs;
     Button btnAdminEditTrainers;
     Button btnAdminEditSchedule;
+    Button btnAdminAddTrainer;
+    Button btnAdminAddDog;
     List<Trainer> trainerList;
     List<Dogs> dogsList;
     List<Events> eventsList;
@@ -52,6 +54,8 @@ public class AdminPage extends AppCompatActivity {
         btnAdminEditDogs = findViewById(R.id.btnAdminEditDogs);
         btnAdminEditTrainers = findViewById(R.id.btnAdminEditTrainers);
         btnAdminEditSchedule = findViewById(R.id.btnAdminEditSchedule);
+        btnAdminAddTrainer = findViewById(R.id.btnAdminAddTrainer);
+        btnAdminAddDog = findViewById(R.id.btnAdminAddDog);
         lvAdminPage = findViewById(R.id.lvAdminPage);
 
         btnAdminBack.setOnClickListener(new View.OnClickListener() {
@@ -100,17 +104,213 @@ public class AdminPage extends AppCompatActivity {
                         // i is the position integer
                         Trainer trainer = trainerList.get(i);
 
-                        //String id = dogShowDBRef.getKey();
-                        showUpdateTrainer(trainer.getId(), trainer.getName());
+                        showUpdateTrainer(trainer.getId(), trainer.getName(), trainer.getCountry(), trainer.getClub());
                         return false;
                     }
                 });
             }
         });
 
+        btnAdminAddTrainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAddTrainer();
+            }
+        });
+
+        btnAdminAddDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAddDog();
+            }
+        });
+
+        btnAdminEditDogs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dogsList = new ArrayList<>();
+
+                // Returns the database under the specified path
+                dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs");
+
+                dogShowDBRef.addValueEventListener((new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        dogsList.clear();
+
+                        // Iterate over the entries in the DB and add the values to a local list
+                        for (DataSnapshot dogsDataSnap : snapshot.getChildren()) {
+                            Dogs dog = dogsDataSnap.getValue(Dogs.class);
+                            dogsList.add(dog);
+                        }
+
+                        DogsListAdapter adapter = new DogsListAdapter(AdminPage.this, dogsList);
+                        lvAdminPage.setAdapter(adapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                }));
+
+                // Here we set the long press listener to the list view
+                lvAdminPage.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        //String id = dogShowDBRef.getKey();
+                        // i is the position integer
+                        Dogs dog = dogsList.get(i);
+
+                        showUpdateDog(dog.getId(), dog.getName(), dog.getBreed(), dog.getFavoriteToy());
+                        return false;
+                    }
+                });
+            }
+
+
+        });
+
     } // end onCreate
 
-    private void showUpdateTrainer(String id, String name) {
+    private void showAddDog() {
+
+        AlertDialog.Builder dogDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dogDialogView = inflater.inflate(R.layout.add_dog_dialog, null);
+
+        dogDialog.setView(dogDialogView);
+
+        // now need the view references (like we have in the class prior to onCreate) within the dialog view
+        EditText etAddDogName = dogDialogView.findViewById(R.id.etAddDogName);
+        EditText etAddDogBreed = dogDialogView.findViewById(R.id.etAddDogBreed);
+        EditText etAddDogFavoriteToy = dogDialogView.findViewById(R.id.etAddDogFavoriteToy);
+        Button btnAddDog = dogDialogView.findViewById(R.id.btnAddDog);
+
+        // Now show the dialog box
+        dogDialog.setTitle(String.format("Add New Dog"));
+
+        AlertDialog dialog = dogDialog.create();
+        dialog.show();
+
+        // Here we set the click listener for the update button
+        btnAddDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Get the values from the view
+                String newName = etAddDogName.getText().toString();
+                String newBreed = etAddDogBreed.getText().toString();
+                String newFavoriteToy = etAddDogFavoriteToy.getText().toString();
+
+                addDogData(newName, newBreed, newFavoriteToy);
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private void addDogData(String name, String breed, String favoriteToy) {
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs");
+        String id = dogShowDBRef.push().getKey();
+        Dogs dog = new Dogs(id, name, breed, favoriteToy);
+        dogShowDBRef.child(id).setValue(dog);
+
+    }
+
+    private void showUpdateDog(String id, String name, String breed, String favoriteToy) {
+
+        AlertDialog.Builder dogDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dogDialogView = inflater.inflate(R.layout.update_dog_dialog, null);
+
+        dogDialog.setView(dogDialogView);
+
+        // now need the view references (like we have in the class prior to onCreate) within the dialog view
+        EditText etUpdateDogName = dogDialogView.findViewById(R.id.etUpdateDogName);
+        EditText etUpdateDogBreed = dogDialogView.findViewById(R.id.etUpdateDogBreed);
+        EditText etUpdateDogFavoriteToy = dogDialogView.findViewById(R.id.etUpdateDogFavoriteToy);
+        Button btnUpdateDog = dogDialogView.findViewById(R.id.btnUpdateDog);
+
+        // auto-populates fields to current values
+        etUpdateDogName.setText(name);
+        etUpdateDogBreed.setText(breed);
+        etUpdateDogFavoriteToy.setText(favoriteToy);
+
+        // Now show the dialog box
+        dogDialog.setTitle(String.format("Updating %s", name));
+
+        AlertDialog dialog = dogDialog.create();
+        dialog.show();
+
+        // Here we set the click listener for the update button
+        btnUpdateDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Get the values from the view
+                String newName = etUpdateDogName.getText().toString();
+                String newBreed = etUpdateDogBreed.getText().toString();
+                String newFavoriteToy = etUpdateDogFavoriteToy.getText().toString();
+
+                updateDogData(id, newName, newBreed, newFavoriteToy);
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private void updateDogData(String id, String name, String breed, String favoriteToy) {
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs").child(id);
+        Dogs dog = new Dogs(id, name, breed, favoriteToy);
+        dogShowDBRef.setValue(dog);
+    }
+
+    private void showAddTrainer() {
+        // don't need to pass an id or name here
+        // because the name is only used for UX and the id has not yet been created
+
+        AlertDialog.Builder trainerDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View trainerDialogView = inflater.inflate(R.layout.add_trainer_dialog, null);
+
+        trainerDialog.setView(trainerDialogView);
+
+        // now need the view references (like we have in the class prior to onCreate) within the dialog view
+        EditText etAddTrainerName = trainerDialogView.findViewById(R.id.etAddTrainerName);
+        EditText etAddTrainerCountry = trainerDialogView.findViewById(R.id.etAddTrainerCountry);
+        EditText etAddTrainerClub = trainerDialogView.findViewById(R.id.etAddTrainerClub);
+        Button btnAddTrainer = trainerDialogView.findViewById(R.id.btnAddTrainer);
+
+        // Now show the dialog box
+        trainerDialog.setTitle(String.format("Add New Trainer"));
+
+        AlertDialog dialog = trainerDialog.create();
+        dialog.show();
+
+        // Here we set the click listener for the update button
+        btnAddTrainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Get the values from the view
+                String newName = etAddTrainerName.getText().toString();
+                String newCountry = etAddTrainerCountry.getText().toString();
+                String newClub = etAddTrainerClub.getText().toString();
+
+                addTrainerData(newName, newCountry, newClub);
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private void addTrainerData(String name, String country, String club) {
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("trainers");
+        String id = dogShowDBRef.push().getKey();
+        Trainer trainer = new Trainer(id, name, country, club);
+        dogShowDBRef.child(id).setValue(trainer);
+    }
+
+    private void showUpdateTrainer(String id, String name, String country, String club) {
 
         AlertDialog.Builder trainerDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -124,9 +324,15 @@ public class AdminPage extends AppCompatActivity {
         EditText etUpdateTrainerClub = trainerDialogView.findViewById(R.id.etUpdateTrainerClub);
         Button btnUpdateTrainer = trainerDialogView.findViewById(R.id.btnUpdateTrainer);
 
+        etUpdateTrainerName.setText(name);
+        etUpdateTrainerCountry.setText(country);
+        etUpdateTrainerClub.setText(club);
+
         // Now show the dialog box
         trainerDialog.setTitle(String.format("Updating %s", name));
-        trainerDialog.show();
+
+        AlertDialog dialog = trainerDialog.create();
+        dialog.show();
 
         // Here we set the click listener for the update button
         btnUpdateTrainer.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +345,7 @@ public class AdminPage extends AppCompatActivity {
                 String newClub = etUpdateTrainerClub.getText().toString();
 
                 updateTrainerData(id, newName, newCountry, newClub);
+                dialog.dismiss();
             }
         });
     }
@@ -149,5 +356,8 @@ public class AdminPage extends AppCompatActivity {
         dogShowDBRef = FirebaseDatabase.getInstance().getReference("trainers").child(id);
         Trainer trainer = new Trainer(id, name, country, club);
         dogShowDBRef.setValue(trainer);
+
     }
+
+
 }

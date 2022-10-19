@@ -3,7 +3,7 @@ package com.example.seaddogshow;
 public class Trainer {
 
     String name;
-    String city;
+    String country;
     String club;
     String id;
 
@@ -11,10 +11,10 @@ public class Trainer {
         //stub
     }
 
-    public Trainer(String id, String name, String city, String club) {
+    public Trainer(String id, String name, String country, String club) {
         this.id = id;
         this.name = name;
-        this.city = city;
+        this.country = country;
         this.club = club;
         //this.years_experience = years_experience;
     }
@@ -27,8 +27,8 @@ public class Trainer {
         return name;
     }
 
-    public String getCity() {
-        return city;
+    public String getCountry() {
+        return country;
     }
 
     public String getClub() {

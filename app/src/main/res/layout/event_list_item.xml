@@ -6,16 +6,16 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/listItemScheduleEvent"
+        android:id="@+id/listItemEventEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:text="event"
-        app:layout_constraintBaseline_toBaselineOf="@+id/listItemScheduleDay"
-        app:layout_constraintStart_toStartOf="@+id/listItemScheduleDay" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/listItemEventDay"
+        app:layout_constraintStart_toStartOf="@+id/listItemEventDay" />
 
     <TextView
-        android:id="@+id/listItemScheduleDay"
+        android:id="@+id/listItemEventDay"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginStart="16dp"

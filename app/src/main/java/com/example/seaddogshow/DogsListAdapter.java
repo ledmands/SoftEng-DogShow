@@ -37,14 +37,14 @@ public class DogsListAdapter extends ArrayAdapter {
         TextView dogName = listItemView.findViewById(R.id.dogListItemName);
         TextView dogBreed = listItemView.findViewById(R.id.dogListItemBreed);
         TextView dogFavoriteToy = listItemView.findViewById(R.id.dogListItemToy);
-        TextView dogEvents = listItemView.findViewById(R.id.dogListItemEvents);
+        //TextView dogEvents = listItemView.findViewById(R.id.dogListItemEvents);
 
         Dogs dogs = dogsList.get(position);
 
         dogName.setText(dogs.getName());
         dogBreed.setText(dogs.getBreed());
-        dogFavoriteToy.setText(dogs.getFavorite_Toy());
-        dogEvents.setText(dogs.getEvents());
+        dogFavoriteToy.setText(dogs.getFavoriteToy());
+        //dogEvents.setText(dogs.getEvents());
 
         return listItemView;
     }

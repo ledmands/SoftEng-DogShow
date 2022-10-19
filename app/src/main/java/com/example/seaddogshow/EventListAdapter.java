@@ -1,7 +1,6 @@
 package com.example.seaddogshow;
 
 import android.app.Activity;
-import android.media.metrics.Event;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ public class EventListAdapter extends ArrayAdapter {
 
     public EventListAdapter(Activity mActivity, List<Events> eventList) {
 
-        super(mActivity, R.layout.schedule_list_item, eventList); // uses the list_item layout
+        super(mActivity, R.layout.event_list_item, eventList); // uses the list_item layout
         this.mActivity = mActivity;
         this.eventList = eventList;
 
@@ -33,10 +32,10 @@ public class EventListAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = mActivity.getLayoutInflater();
-        View listItemView = inflater.inflate(R.layout.schedule_list_item, null, true);
+        View listItemView = inflater.inflate(R.layout.event_list_item, null, true);
 
-        TextView event = listItemView.findViewById(R.id.listItemScheduleEvent);
-        TextView day = listItemView.findViewById(R.id.listItemScheduleDay);
+        TextView event = listItemView.findViewById(R.id.listItemEventEvent);
+        TextView day = listItemView.findViewById(R.id.listItemEventDay);
         //TextView timeTwo = listItemView.findViewById(R.id.listItemScheduleTime2);
         //TextView eventTwo = listItemView.findViewById(R.id.listItemScheduleEvent2);
         //TextView timeThree = listItemView.findViewById(R.id.listItemScheduleTime3);

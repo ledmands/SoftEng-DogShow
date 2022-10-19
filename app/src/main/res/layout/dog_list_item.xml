@@ -36,14 +36,14 @@
         app:layout_constraintStart_toStartOf="@+id/dogListLabelBreed"
         app:layout_constraintTop_toBottomOf="@+id/dogListLabelBreed" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/dogListLabelEvents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Events:"
         app:layout_constraintStart_toStartOf="@+id/dogListLabelToy"
-        app:layout_constraintTop_toBottomOf="@+id/dogListLabelToy" />
+        app:layout_constraintTop_toBottomOf="@+id/dogListLabelToy" />-->
 
     <TextView
         android:id="@+id/dogListItemName"
@@ -69,11 +69,11 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelToy"
         app:layout_constraintStart_toEndOf="@+id/dogListLabelToy" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/dogListItemEvents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/dogListLabelEvents"
-        app:layout_constraintStart_toEndOf="@+id/dogListLabelEvents" />
+        app:layout_constraintStart_toEndOf="@+id/dogListLabelEvents" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

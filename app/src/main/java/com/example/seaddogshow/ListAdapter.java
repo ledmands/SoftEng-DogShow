@@ -42,7 +42,7 @@ public class ListAdapter extends ArrayAdapter {
         Trainer trainer = trainerList.get(position);
 
         trainerName.setText(trainer.getName());
-        trainerCity.setText(trainer.getCity());
+        trainerCity.setText(trainer.getCountry());
         trainerClub.setText(trainer.getClub());
         //trainerExp.setText(trainer.getYearsExperience());
         //trainerExp.setText(trainer.getYearsExp());

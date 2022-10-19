@@ -4,16 +4,20 @@ public class Events {
 
     String day;
     String event;
-    //String day;
+    String id;
 
     public Events(){
         // stub
     }
 
-    public Events(String day, String event) {
+    public Events(String id, String day, String event) {
         this.day = day;
         this.event = event;
-        //this.day = day;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getDay() {
@@ -23,15 +27,6 @@ public class Events {
     public String getEvent() {
         return event;
     }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public void setEvent(String event) {
-        this.event = event;
-    }
-
 
 
 }

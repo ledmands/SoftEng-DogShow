@@ -7,8 +7,8 @@
 
     <Button
         android:id="@+id/btnAdminBack"
-        android:layout_width="82dp"
-        android:layout_height="115dp"
+        android:layout_width="76dp"
+        android:layout_height="171dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="back"
@@ -53,4 +53,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAdminBack"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnAdminAddTrainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Add Trainer"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnAdminEditSchedule"
+        app:layout_constraintStart_toEndOf="@+id/btnAdminEditSchedule" />
+
+    <Button
+        android:id="@+id/btnAdminAddDog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Add Dog"
+        app:layout_constraintStart_toStartOf="@+id/btnAdminEditSchedule"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdminEditSchedule" />
 </androidx.constraintlayout.widget.ConstraintLayout>
