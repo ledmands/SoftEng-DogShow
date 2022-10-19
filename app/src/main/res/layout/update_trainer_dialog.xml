@@ -36,5 +36,12 @@
         android:text="Update"
         android:layout_marginTop="10dp"/>
 
+    <Button
+        android:id="@+id/btnDeleteTrainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DELETE TRAINER"
+        android:layout_marginTop="10dp"/>
+
 
 </LinearLayout>

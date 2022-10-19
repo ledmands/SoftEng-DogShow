@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -232,6 +235,7 @@ public class AdminPage extends AppCompatActivity {
         EditText etUpdateEventDay = eventDialogView.findViewById(R.id.etUpdateEventDay);
         EditText etUpdateEventEvent = eventDialogView.findViewById(R.id.etUpdateEventEvent);
         Button btnUpdateEvent = eventDialogView.findViewById(R.id.btnUpdateEvent);
+        Button btnDeleteEvent = eventDialogView.findViewById(R.id.btnDeleteEvent);
 
         // auto-populates fields to current values
         etUpdateEventDay.setText(day);
@@ -253,6 +257,14 @@ public class AdminPage extends AppCompatActivity {
                 String newEvent = etUpdateEventEvent.getText().toString();
 
                 updateEventData(id, newDay, newEvent);
+                dialog.dismiss();
+            }
+        });
+
+        btnDeleteEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteEvent(id);
                 dialog.dismiss();
             }
         });
@@ -364,6 +376,7 @@ public class AdminPage extends AppCompatActivity {
         EditText etUpdateDogBreed = dogDialogView.findViewById(R.id.etUpdateDogBreed);
         EditText etUpdateDogFavoriteToy = dogDialogView.findViewById(R.id.etUpdateDogFavoriteToy);
         Button btnUpdateDog = dogDialogView.findViewById(R.id.btnUpdateDog);
+        Button btnDeleteDog = dogDialogView.findViewById(R.id.btnDeleteDog);
 
         // auto-populates fields to current values
         etUpdateDogName.setText(name);
@@ -387,6 +400,14 @@ public class AdminPage extends AppCompatActivity {
                 String newFavoriteToy = etUpdateDogFavoriteToy.getText().toString();
 
                 updateDogData(id, newName, newBreed, newFavoriteToy);
+                dialog.dismiss();
+            }
+        });
+
+        btnDeleteDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteDog(id);
                 dialog.dismiss();
             }
         });
@@ -456,6 +477,7 @@ public class AdminPage extends AppCompatActivity {
         EditText etUpdateTrainerCountry = trainerDialogView.findViewById(R.id.etUpdateTrainerCountry);
         EditText etUpdateTrainerClub = trainerDialogView.findViewById(R.id.etUpdateTrainerClub);
         Button btnUpdateTrainer = trainerDialogView.findViewById(R.id.btnUpdateTrainer);
+        Button btnDeleteTrainer = trainerDialogView.findViewById(R.id.btnDeleteTrainer);
 
         etUpdateTrainerName.setText(name);
         etUpdateTrainerCountry.setText(country);
@@ -481,6 +503,14 @@ public class AdminPage extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+
+        btnDeleteTrainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteTrainer(id);
+                dialog.dismiss();
+            }
+        });
     }
 
     private void updateTrainerData(String id, String name, String country, String club) {
@@ -492,5 +522,55 @@ public class AdminPage extends AppCompatActivity {
 
     }
 
+    private void deleteTrainer(String id){
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("trainers").child(id);
+
+        Task<Void> mTask = dogShowDBRef.removeValue();
+        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //showToast("Deleted");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //showToast("Error deleting record");
+            }
+        });
+    }
+
+    private void deleteDog(String id){
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs").child(id);
+
+        Task<Void> mTask = dogShowDBRef.removeValue();
+        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //showToast("Deleted");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //showToast("Error deleting record");
+            }
+        });
+    }
+
+    private void deleteEvent(String id){
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("events").child(id);
+
+        Task<Void> mTask = dogShowDBRef.removeValue();
+        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //showToast("Deleted");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //showToast("Error deleting record");
+            }
+        });
+    }
 
 }
