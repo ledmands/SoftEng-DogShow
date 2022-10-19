@@ -34,12 +34,12 @@
         app:layout_constraintStart_toEndOf="@+id/btnAdminEditDogs" />
 
     <Button
-        android:id="@+id/btnAdminEditSchedule"
+        android:id="@+id/btnAdminEditEvents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="edit schedule"
+        android:text="edit events"
         app:layout_constraintStart_toEndOf="@+id/btnAdminBack"
         app:layout_constraintTop_toBottomOf="@+id/btnAdminEditDogs" />
 
@@ -60,8 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Add Trainer"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnAdminEditSchedule"
-        app:layout_constraintStart_toEndOf="@+id/btnAdminEditSchedule" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnAdminEditEvents"
+        app:layout_constraintStart_toEndOf="@+id/btnAdminEditEvents" />
 
     <Button
         android:id="@+id/btnAdminAddDog"
@@ -69,6 +69,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Add Dog"
-        app:layout_constraintStart_toStartOf="@+id/btnAdminEditSchedule"
-        app:layout_constraintTop_toBottomOf="@+id/btnAdminEditSchedule" />
+        app:layout_constraintStart_toStartOf="@+id/btnAdminEditEvents"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdminEditEvents" />
+
+    <Button
+        android:id="@+id/btnAdminAddEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Add Event"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnAdminAddDog"
+        app:layout_constraintStart_toEndOf="@+id/btnAdminAddDog" />
 </androidx.constraintlayout.widget.ConstraintLayout>
