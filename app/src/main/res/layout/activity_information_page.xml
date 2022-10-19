@@ -8,36 +8,27 @@
 
     <Button
         android:id="@+id/btnShowTrainers"
-        android:layout_width="83dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
         android:text="Trainers"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnGoHome"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGoHome"
         app:layout_constraintStart_toEndOf="@+id/btnGoHome" />
 
     <Button
-        android:id="@+id/btnShowDogs"
-        android:layout_width="60dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="24dp"
-        android:text="Dogs"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnShowTrainers"
-        app:layout_constraintStart_toEndOf="@+id/btnShowTrainers" />
-
-    <Button
         android:id="@+id/btnShowEvents"
-        android:layout_width="86dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
         android:text="Events"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnShowDogs"
+        app:layout_constraintBottom_toBottomOf="@+id/btnShowDogs"
         app:layout_constraintStart_toEndOf="@+id/btnShowDogs" />
 
     <ListView
         android:id="@+id/lvInformation"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,11 +36,20 @@
 
     <Button
         android:id="@+id/btnGoHome"
-        android:layout_width="93dp"
-        android:layout_height="61dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Back"
+        android:text="Home Page"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnShowDogs"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:text="Dogs"
+        app:layout_constraintBottom_toBottomOf="@+id/btnShowTrainers"
+        app:layout_constraintStart_toEndOf="@+id/btnShowTrainers" />
 </androidx.constraintlayout.widget.ConstraintLayout>
