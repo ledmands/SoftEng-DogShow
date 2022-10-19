@@ -55,18 +55,15 @@ public class TicketsPage extends AppCompatActivity {
 
     }
 
-    //InsertMethodstoDB
     private void insertTicketInfo () {
 
         String ticketsName = etTicketsName.getText().toString();
         String creditCard = etTicketsCC.getText().toString();
         String numTickets = etTicketsNum.getText().toString();
         String email = etTicketsEmail.getText().toString();
+        String id = dogShowDBRef.push().getKey();
 
-        //Anyotherinformationtoadd,likedognames,breed,hometown,etc,couldgohere.
-
-        //CreatenewTrainersobject
-        TicketRequest ticketrequest = new TicketRequest(ticketsName, numTickets, creditCard, email);
+        TicketRequest ticketrequest = new TicketRequest(id, ticketsName, numTickets, creditCard, email);
 
         dogShowDBRef.push().setValue(ticketrequest);
         Toast.makeText(com.example.seaddogshow.TicketsPage.this, "Ticket request submitted. Thank you!", Toast.LENGTH_SHORT).show();

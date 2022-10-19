@@ -26,12 +26,6 @@ import java.util.List;
 
 public class AdminPage extends AppCompatActivity {
 
-    // need edit dogs
-    // edit schedule
-    // edit trainers
-    // back button
-    //push().setValue("Hello, World!");
-
     DatabaseReference dogShowDBRef;
 
     ListView lvAdminPage;

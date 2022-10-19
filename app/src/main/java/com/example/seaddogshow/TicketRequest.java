@@ -6,16 +6,26 @@ public class TicketRequest {
     String numTickets;
     String creditCard;
     String email;
+    String id;
 
     public TicketRequest() {
         //stub
     }
 
-    public TicketRequest(String ticketsName, String numTickets, String creditCard, String email) {
+    public TicketRequest(String id, String ticketsName, String numTickets, String creditCard, String email) {
         this.ticketsName = ticketsName;
         this.numTickets = numTickets;
         this.creditCard = creditCard;
         this.email = email;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTicketsName() {
