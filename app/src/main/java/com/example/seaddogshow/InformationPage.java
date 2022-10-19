@@ -22,15 +22,18 @@ import java.util.List;
 
 public class InformationPage extends AppCompatActivity {
 
-    DatabaseReference dogShowDBRef;
-    ListView lvInformation;
-    Button btnShowTrainers;
-    Button btnShowDogs;
-    Button btnShowEvents;
-    Button btnGoHome;
-    List<Trainer> trainerList;
-    List<Dogs> dogsList;
-    List<Events> eventList;
+    private DatabaseReference dogShowDBRef;
+
+    private ListView lvInformation;
+
+    private Button btnShowTrainers;
+    private Button btnShowDogs;
+    private Button btnShowEvents;
+    private Button btnGoHome;
+
+    private List<Trainer> trainerList;
+    private List<Dogs> dogsList;
+    private List<Events> eventList;
 
 
     @Override

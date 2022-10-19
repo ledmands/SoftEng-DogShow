@@ -2,11 +2,11 @@ package com.example.seaddogshow;
 
 public class Dogs {
 
-    String name;
-    String breed;
-    String favoriteToy;
+    private String name;
+    private String breed;
+    private String favoriteToy;
     //String events;
-    String id;
+    private String id;
 
     public Dogs(){
         // stub

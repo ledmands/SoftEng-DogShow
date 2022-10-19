@@ -13,8 +13,9 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class ListAdapter extends ArrayAdapter {
+
     private final Activity mActivity;
-    List<Trainer> trainerList;
+    private List<Trainer> trainerList;
 
 
 
@@ -37,15 +38,12 @@ public class ListAdapter extends ArrayAdapter {
         TextView trainerName = listItemView.findViewById(R.id.listItemTrainerName);
         TextView trainerCity = listItemView.findViewById(R.id.listItemTrainerCity);
         TextView trainerClub = listItemView.findViewById(R.id.listItemTrainerClub);
-        //TextView trainerExp = listItemView.findViewById(R.id.listItemTrainerExp);
 
         Trainer trainer = trainerList.get(position);
 
         trainerName.setText(trainer.getName());
         trainerCity.setText(trainer.getCountry());
         trainerClub.setText(trainer.getClub());
-        //trainerExp.setText(trainer.getYearsExperience());
-        //trainerExp.setText(trainer.getYearsExp());
 
         return listItemView;
     }

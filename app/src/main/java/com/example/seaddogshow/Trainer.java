@@ -2,10 +2,10 @@ package com.example.seaddogshow;
 
 public class Trainer {
 
-    String name;
-    String country;
-    String club;
-    String id;
+    private String name;
+    private String country;
+    private String club;
+    private String id;
 
     public Trainer() {
         //stub

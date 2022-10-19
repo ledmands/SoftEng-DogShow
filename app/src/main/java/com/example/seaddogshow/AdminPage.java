@@ -29,19 +29,21 @@ import java.util.List;
 
 public class AdminPage extends AppCompatActivity {
 
-    DatabaseReference dogShowDBRef;
+    private DatabaseReference dogShowDBRef;
 
-    ListView lvAdminPage;
-    Button btnAdminBack;
-    Button btnAdminEditDogs;
-    Button btnAdminEditTrainers;
-    Button btnAdminEditEvents;
-    Button btnAdminAddTrainer;
-    Button btnAdminAddDog;
-    Button btnAdminAddEvent;
-    List<Trainer> trainerList;
-    List<Dogs> dogsList;
-    List<Events> eventsList;
+    private ListView lvAdminPage;
+
+    private Button btnAdminBack;
+    private Button btnAdminEditDogs;
+    private Button btnAdminEditTrainers;
+    private Button btnAdminEditEvents;
+    private Button btnAdminAddTrainer;
+    private Button btnAdminAddDog;
+    private Button btnAdminAddEvent;
+
+    private List<Trainer> trainerList;
+    private List<Dogs> dogsList;
+    private List<Events> eventsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -290,7 +292,7 @@ public class AdminPage extends AppCompatActivity {
         Button btnAddEvent = eventDialogView.findViewById(R.id.btnAddEvent);
 
         // Now show the dialog box
-        eventDialog.setTitle(String.format("Add New Event"));
+        eventDialog.setTitle("Add New Event");
 
         AlertDialog dialog = eventDialog.create();
         dialog.show();
@@ -334,7 +336,7 @@ public class AdminPage extends AppCompatActivity {
         Button btnAddDog = dogDialogView.findViewById(R.id.btnAddDog);
 
         // Now show the dialog box
-        dogDialog.setTitle(String.format("Add New Dog"));
+        dogDialog.setTitle("Add New Dog");
 
         AlertDialog dialog = dogDialog.create();
         dialog.show();

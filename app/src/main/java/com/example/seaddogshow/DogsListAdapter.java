@@ -13,18 +13,15 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class DogsListAdapter extends ArrayAdapter {
+
     private final Activity mActivity;
-    List<Dogs> dogsList;
-
-
+    private List<Dogs> dogsList;
 
     public DogsListAdapter(Activity mActivity, List<Dogs> dogsList){
 
         super(mActivity, R.layout.dog_list_item,dogsList); // uses the list_item layout
         this.mActivity = mActivity;
         this.dogsList = dogsList;
-
-
     }
 
     @NonNull

@@ -15,15 +15,15 @@ import com.google.firebase.database.FirebaseDatabase;
 public class TicketsPage extends AppCompatActivity {
     private static final String TAG = "TicketsPage";
 
+    private DatabaseReference dogShowDBRef;
 
+    private Button btnTicketsBack;
+    private Button btnTicketsSubmit;
 
-    DatabaseReference dogShowDBRef;
-    Button btnTicketsBack;
-    Button btnTicketsSubmit;
-    EditText etTicketsEmail;
-    EditText etTicketsCC;
-    EditText etTicketsName;
-    EditText etTicketsNum;
+    private EditText etTicketsEmail;
+    private EditText etTicketsCC;
+    private EditText etTicketsName;
+    private EditText etTicketsNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

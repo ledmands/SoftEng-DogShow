@@ -14,11 +14,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
+
     private static final String TAG = "MainActivity";
 
-    Button btnAdmin;
-    Button btnTickets;
-    Button btnInformation;
+    private Button btnAdmin;
+    private Button btnTickets;
+    private Button btnInformation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

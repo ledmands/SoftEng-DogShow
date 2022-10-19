@@ -2,9 +2,9 @@ package com.example.seaddogshow;
 
 public class Events {
 
-    String day;
-    String event;
-    String id;
+    private String day;
+    private String event;
+    private String id;
 
     public Events(){
         // stub

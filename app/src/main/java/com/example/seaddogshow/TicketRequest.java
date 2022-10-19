@@ -2,11 +2,11 @@ package com.example.seaddogshow;
 
 public class TicketRequest {
 
-    String ticketsName;
-    String numTickets;
-    String creditCard;
-    String email;
-    String id;
+    private String ticketsName;
+    private String numTickets;
+    private String creditCard;
+    private String email;
+    private String id;
 
     public TicketRequest() {
         //stub
