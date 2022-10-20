@@ -11,16 +11,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:text="event"
+        android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/listItemEventDay"
         app:layout_constraintStart_toStartOf="@+id/listItemEventDay" />
 
     <TextView
         android:id="@+id/listItemEventDay"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="day"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
