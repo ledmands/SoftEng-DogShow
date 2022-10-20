@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -260,6 +261,8 @@ public class AdminPage extends AppCompatActivity {
 
                 updateEventData(id, newDay, newEvent);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Event updated", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -268,6 +271,7 @@ public class AdminPage extends AppCompatActivity {
             public void onClick(View view) {
                 deleteEvent(id);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Event deleted", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -309,6 +313,7 @@ public class AdminPage extends AppCompatActivity {
 
                 addEventData(newDay, newEvent);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Event added", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -353,6 +358,8 @@ public class AdminPage extends AppCompatActivity {
 
                 addDogData(newName, newBreed, newFavoriteToy);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Dog added", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -403,6 +410,8 @@ public class AdminPage extends AppCompatActivity {
 
                 updateDogData(id, newName, newBreed, newFavoriteToy);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Dog updated", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -411,6 +420,8 @@ public class AdminPage extends AppCompatActivity {
             public void onClick(View view) {
                 deleteDog(id);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Dog deleted", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -438,7 +449,7 @@ public class AdminPage extends AppCompatActivity {
         Button btnAddTrainer = trainerDialogView.findViewById(R.id.btnAddTrainer);
 
         // Now show the dialog box
-        trainerDialog.setTitle(String.format("Add New Trainer"));
+        trainerDialog.setTitle("Add New Trainer");
 
         AlertDialog dialog = trainerDialog.create();
         dialog.show();
@@ -455,6 +466,8 @@ public class AdminPage extends AppCompatActivity {
 
                 addTrainerData(newName, newCountry, newClub);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Trainer Added", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -503,6 +516,8 @@ public class AdminPage extends AppCompatActivity {
 
                 updateTrainerData(id, newName, newCountry, newClub);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Trainer updated", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -511,6 +526,8 @@ public class AdminPage extends AppCompatActivity {
             public void onClick(View view) {
                 deleteTrainer(id);
                 dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Trainer deleted", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
