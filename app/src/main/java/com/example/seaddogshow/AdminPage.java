@@ -1,7 +1,6 @@
 package com.example.seaddogshow;
 
 import android.content.Intent;
-import android.media.metrics.Event;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -86,7 +85,7 @@ public class AdminPage extends AppCompatActivity {
                             trainerList.add(trainer);
                         }
 
-                        ListAdapter adapter = new ListAdapter(AdminPage.this, trainerList);
+                        TrainerListAdapter adapter = new TrainerListAdapter(AdminPage.this, trainerList);
                         lvAdminPage.setAdapter(adapter);
                     }
 
@@ -101,7 +100,6 @@ public class AdminPage extends AppCompatActivity {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                        //String id = dogShowDBRef.getKey();
                         // i is the position integer
                         Trainer trainer = trainerList.get(i);
 

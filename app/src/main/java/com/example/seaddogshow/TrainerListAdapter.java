@@ -12,16 +12,16 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class ListAdapter extends ArrayAdapter {
+public class TrainerListAdapter extends ArrayAdapter {
 
     private final Activity mActivity;
     private List<Trainer> trainerList;
 
 
 
-    public ListAdapter(Activity mActivity, List<Trainer> trainerList){
+    public TrainerListAdapter(Activity mActivity, List<Trainer> trainerList){
 
-        super(mActivity, R.layout.list_item,trainerList); // uses the list_item layout
+        super(mActivity, R.layout.trainer_list_item,trainerList); // uses the list_item layout
         this.mActivity = mActivity;
         this.trainerList = trainerList;
 
@@ -33,7 +33,7 @@ public class ListAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = mActivity.getLayoutInflater();
-        View listItemView = inflater.inflate(R.layout.list_item, null, true);
+        View listItemView = inflater.inflate(R.layout.trainer_list_item, null, true);
 
         TextView trainerName = listItemView.findViewById(R.id.listItemTrainerName);
         TextView trainerCity = listItemView.findViewById(R.id.listItemTrainerCity);

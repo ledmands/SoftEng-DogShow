@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.metrics.Event;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,7 +74,7 @@ public class InformationPage extends AppCompatActivity {
                             trainerList.add(trainer);
                         }
 
-                        ListAdapter adapter = new ListAdapter(InformationPage.this, trainerList);
+                        TrainerListAdapter adapter = new TrainerListAdapter(InformationPage.this, trainerList);
                         lvInformation.setAdapter(adapter);
                     }
 
