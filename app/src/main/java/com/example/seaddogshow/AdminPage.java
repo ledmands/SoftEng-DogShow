@@ -1,7 +1,6 @@
 package com.example.seaddogshow;
 
 import android.content.Intent;
-import android.media.metrics.Event;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -67,7 +65,14 @@ public class AdminPage extends AppCompatActivity {
                 Intent intent = new Intent(AdminPage.this, MainActivity.class) ;
                 startActivity(intent);
             }
-        });
+        }); // end btnAdminBack OnClickListener
+
+        btnAdminAddTrainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAddTrainer();
+            }
+        }); // end btnAdminAddTrainer OnClickListener
 
         btnAdminEditTrainers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +93,7 @@ public class AdminPage extends AppCompatActivity {
                             trainerList.add(trainer);
                         }
 
-                        ListAdapter adapter = new ListAdapter(AdminPage.this, trainerList);
+                        TrainerListAdapter adapter = new TrainerListAdapter(AdminPage.this, trainerList);
                         lvAdminPage.setAdapter(adapter);
                     }
 
@@ -112,21 +117,14 @@ public class AdminPage extends AppCompatActivity {
                     }
                 });
             }
-        });
-
-        btnAdminAddTrainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAddTrainer();
-            }
-        });
+        }); // end btnAdminEditTrainers OnClickListener
 
         btnAdminAddDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showAddDog();
             }
-        });
+        }); // end btnAdminAddDog OnClickListener
 
         btnAdminEditDogs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,14 +171,14 @@ public class AdminPage extends AppCompatActivity {
             }
 
 
-        });
+        }); // end btnAdminEditDogs OnClickListener
 
         btnAdminAddEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showAddEvent();
             }
-        });
+        }); // end btnAdminAddEvent OnClickListener
 
         btnAdminEditEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,9 +222,52 @@ public class AdminPage extends AppCompatActivity {
                     }
                 });
             }
-        });
+        }); // end btnAdminEditEvents OnClickListener
 
     } // end onCreate
+
+
+    //----- EVENT METHODS -----//
+
+    private void showAddEvent() {
+        AlertDialog.Builder eventDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View eventDialogView = inflater.inflate(R.layout.add_event_dialog, null);
+
+        eventDialog.setView(eventDialogView);
+
+        EditText etAddEventDay = eventDialogView.findViewById(R.id.etAddEventDay);
+        EditText etAddEventEvent = eventDialogView.findViewById(R.id.etAddEventEvent);
+        Button btnAddEvent = eventDialogView.findViewById(R.id.btnAddEvent);
+
+        eventDialog.setTitle("Add New Event");
+
+        AlertDialog dialog = eventDialog.create();
+        dialog.show();
+
+        // Set the onclick listener for the update button
+        btnAddEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Get the values from the view
+                String newDay = etAddEventDay.getText().toString();
+                String newEvent = etAddEventEvent.getText().toString();
+
+                addEventData(newDay, newEvent);
+                dialog.dismiss();
+                Toast.makeText(AdminPage.this, "Event added", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    } // end showAddEvent
+
+    private void addEventData(String day, String event) {
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("events");
+        String id = dogShowDBRef.push().getKey();
+        Events newEvent = new Events(id, day, event);
+        dogShowDBRef.child(id).setValue(newEvent);
+    } // end addEventData
 
     private void showUpdateEvents(String id, String day, String event) {
         AlertDialog.Builder eventDialog = new AlertDialog.Builder(this);
@@ -235,7 +276,6 @@ public class AdminPage extends AppCompatActivity {
 
         eventDialog.setView(eventDialogView);
 
-        // now need the view references (like we have in the class prior to onCreate) within the dialog view
         EditText etUpdateEventDay = eventDialogView.findViewById(R.id.etUpdateEventDay);
         EditText etUpdateEventEvent = eventDialogView.findViewById(R.id.etUpdateEventEvent);
         Button btnUpdateEvent = eventDialogView.findViewById(R.id.btnUpdateEvent);
@@ -245,13 +285,13 @@ public class AdminPage extends AppCompatActivity {
         etUpdateEventDay.setText(day);
         etUpdateEventEvent.setText(event);
 
-        // Now show the dialog box
+        // Show the dialog box
         eventDialog.setTitle(String.format("Updating %s", event));
 
         AlertDialog dialog = eventDialog.create();
         dialog.show();
 
-        // Here we set the click listener for the update button
+        // Set the onclick listener for the update button
         btnUpdateEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -275,57 +315,31 @@ public class AdminPage extends AppCompatActivity {
                 Toast.makeText(AdminPage.this, "Event deleted", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    } // end showUpdateEvents
 
     private void updateEventData(String id, String day, String event) {
         dogShowDBRef = FirebaseDatabase.getInstance().getReference("events").child(id);
         Events newEvent = new Events(id, day, event);
         dogShowDBRef.setValue(newEvent);
-    }
+    } // end updateEventData
 
-    private void showAddEvent() {
-        AlertDialog.Builder eventDialog = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View eventDialogView = inflater.inflate(R.layout.add_event_dialog, null);
+    private void deleteEvent(String id){
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("events").child(id);
 
-        eventDialog.setView(eventDialogView);
-
-        // now need the view references (like we have in the class prior to onCreate) within the dialog view
-        EditText etAddEventDay = eventDialogView.findViewById(R.id.etAddEventDay);
-        EditText etAddEventEvent = eventDialogView.findViewById(R.id.etAddEventEvent);
-        //EditText etAddDogFavoriteToy = eventDialogView.findViewById(R.id.etAddDogFavoriteToy);
-        Button btnAddEvent = eventDialogView.findViewById(R.id.btnAddEvent);
-
-        // Now show the dialog box
-        eventDialog.setTitle("Add New Event");
-
-        AlertDialog dialog = eventDialog.create();
-        dialog.show();
-
-        // Here we set the click listener for the update button
-        btnAddEvent.setOnClickListener(new View.OnClickListener() {
+        Task<Void> mTask = dogShowDBRef.removeValue();
+        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onClick(View view) {
-
-                // Get the values from the view
-                String newDay = etAddEventDay.getText().toString();
-                String newEvent = etAddEventEvent.getText().toString();
-                //String newFavoriteToy = etAddDogFavoriteToy.getText().toString();
-
-                addEventData(newDay, newEvent);
-                dialog.dismiss();
-                Toast.makeText(AdminPage.this, "Event added", Toast.LENGTH_SHORT).show();
+            public void onSuccess(Void aVoid) {
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
             }
         });
+    } // end deleteEvent
 
-    }
 
-    private void addEventData(String day, String event) {
-        dogShowDBRef = FirebaseDatabase.getInstance().getReference("events");
-        String id = dogShowDBRef.push().getKey();
-        Events newEvent = new Events(id, day, event);
-        dogShowDBRef.child(id).setValue(newEvent);
-    }
+    //----- DOG METHODS -----//
 
     private void showAddDog() {
 
@@ -363,7 +377,7 @@ public class AdminPage extends AppCompatActivity {
 
             }
         });
-    }
+    } // end showAddDog
 
     private void addDogData(String name, String breed, String favoriteToy) {
         dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs");
@@ -371,7 +385,7 @@ public class AdminPage extends AppCompatActivity {
         Dogs dog = new Dogs(id, name, breed, favoriteToy);
         dogShowDBRef.child(id).setValue(dog);
 
-    }
+    } // end addDogData
 
     private void showUpdateDog(String id, String name, String breed, String favoriteToy) {
 
@@ -381,7 +395,6 @@ public class AdminPage extends AppCompatActivity {
 
         dogDialog.setView(dogDialogView);
 
-        // now need the view references (like we have in the class prior to onCreate) within the dialog view
         EditText etUpdateDogName = dogDialogView.findViewById(R.id.etUpdateDogName);
         EditText etUpdateDogBreed = dogDialogView.findViewById(R.id.etUpdateDogBreed);
         EditText etUpdateDogFavoriteToy = dogDialogView.findViewById(R.id.etUpdateDogFavoriteToy);
@@ -393,13 +406,11 @@ public class AdminPage extends AppCompatActivity {
         etUpdateDogBreed.setText(breed);
         etUpdateDogFavoriteToy.setText(favoriteToy);
 
-        // Now show the dialog box
         dogDialog.setTitle(String.format("Updating %s", name));
 
         AlertDialog dialog = dogDialog.create();
         dialog.show();
 
-        // Here we set the click listener for the update button
         btnUpdateDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -425,17 +436,34 @@ public class AdminPage extends AppCompatActivity {
 
             }
         });
-    }
+    } // end showUpdateDog
 
     private void updateDogData(String id, String name, String breed, String favoriteToy) {
         dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs").child(id);
         Dogs dog = new Dogs(id, name, breed, favoriteToy);
         dogShowDBRef.setValue(dog);
-    }
+    } // end updateDogData
+
+    private void deleteDog(String id){
+        dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs").child(id);
+
+        Task<Void> mTask = dogShowDBRef.removeValue();
+        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+            }
+        });
+    } // end deleteDog
+
+
+    //----- TRAINER METHODS -----//
 
     private void showAddTrainer() {
-        // don't need to pass an id or name here
-        // because the name is only used for UX and the id has not yet been created
+        // don't need to pass an id or name here because the name is only used for UX and the id has not yet been created
 
         AlertDialog.Builder trainerDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -443,7 +471,6 @@ public class AdminPage extends AppCompatActivity {
 
         trainerDialog.setView(trainerDialogView);
 
-        // now need the view references (like we have in the class prior to onCreate) within the dialog view
         EditText etAddTrainerName = trainerDialogView.findViewById(R.id.etAddTrainerName);
         EditText etAddTrainerCountry = trainerDialogView.findViewById(R.id.etAddTrainerCountry);
         EditText etAddTrainerClub = trainerDialogView.findViewById(R.id.etAddTrainerClub);
@@ -455,7 +482,7 @@ public class AdminPage extends AppCompatActivity {
         AlertDialog dialog = trainerDialog.create();
         dialog.show();
 
-        // Here we set the click listener for the update button
+        // Now set the onclick listener for the update button
         btnAddTrainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -471,14 +498,14 @@ public class AdminPage extends AppCompatActivity {
 
             }
         });
-    }
+    } // end showAddTrainer
 
     private void addTrainerData(String name, String country, String club) {
         dogShowDBRef = FirebaseDatabase.getInstance().getReference("trainers");
         String id = dogShowDBRef.push().getKey();
         Trainer trainer = new Trainer(id, name, country, club);
         dogShowDBRef.child(id).setValue(trainer);
-    }
+    } // end addTrainerData
 
     private void showUpdateTrainer(String id, String name, String country, String club) {
 
@@ -488,7 +515,6 @@ public class AdminPage extends AppCompatActivity {
 
         trainerDialog.setView(trainerDialogView);
 
-        // now need the view references (like we have in the class prior to onCreate) within the dialog view
         EditText etUpdateTrainerName = trainerDialogView.findViewById(R.id.etUpdateTrainerName);
         EditText etUpdateTrainerCountry = trainerDialogView.findViewById(R.id.etUpdateTrainerCountry);
         EditText etUpdateTrainerClub = trainerDialogView.findViewById(R.id.etUpdateTrainerClub);
@@ -505,7 +531,7 @@ public class AdminPage extends AppCompatActivity {
         AlertDialog dialog = trainerDialog.create();
         dialog.show();
 
-        // Here we set the click listener for the update button
+        // Now set the onclick listener for the update button
         btnUpdateTrainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -531,7 +557,7 @@ public class AdminPage extends AppCompatActivity {
 
             }
         });
-    }
+    } // end showUpdateTrainer
 
     private void updateTrainerData(String id, String name, String country, String club) {
 
@@ -540,7 +566,7 @@ public class AdminPage extends AppCompatActivity {
         Trainer trainer = new Trainer(id, name, country, club);
         dogShowDBRef.setValue(trainer);
 
-    }
+    } // end updateTrainerData
 
     private void deleteTrainer(String id){
         dogShowDBRef = FirebaseDatabase.getInstance().getReference("trainers").child(id);
@@ -549,48 +575,13 @@ public class AdminPage extends AppCompatActivity {
         mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                //showToast("Deleted");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                //showToast("Error deleting record");
             }
         });
-    }
+    } // end deleteTrainer
 
-    private void deleteDog(String id){
-        dogShowDBRef = FirebaseDatabase.getInstance().getReference("dogs").child(id);
 
-        Task<Void> mTask = dogShowDBRef.removeValue();
-        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                //showToast("Deleted");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //showToast("Error deleting record");
-            }
-        });
-    }
-
-    private void deleteEvent(String id){
-        dogShowDBRef = FirebaseDatabase.getInstance().getReference("events").child(id);
-
-        Task<Void> mTask = dogShowDBRef.removeValue();
-        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                //showToast("Deleted");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //showToast("Error deleting record");
-            }
-        });
-    }
-
-}
+} // end AdminPage

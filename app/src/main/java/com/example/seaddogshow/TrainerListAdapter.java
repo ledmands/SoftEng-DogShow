@@ -12,20 +12,17 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class ListAdapter extends ArrayAdapter {
+public class TrainerListAdapter extends ArrayAdapter {
 
     private final Activity mActivity;
     private List<Trainer> trainerList;
 
 
-
-    public ListAdapter(Activity mActivity, List<Trainer> trainerList){
+    public TrainerListAdapter(Activity mActivity, List<Trainer> trainerList){
 
         super(mActivity, R.layout.trainer_list_item,trainerList); // uses the list_item layout
         this.mActivity = mActivity;
         this.trainerList = trainerList;
-
-
     }
 
     @NonNull

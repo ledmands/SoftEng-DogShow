@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Life is ruff… But not impawsible…</string>
 
-    <string name="message">Welcome to the Dog Show!\n\nPress Information to getinformation about dogs, trainers, and events.\nPress Tickets to purchase tickets.\nPress Admin to enter the administrator view.</string>
+    <string name="message">Welcome to the Dog Show!\n\nPress Information to get information about dogs, trainers, and events.\nPress Tickets to purchase tickets.\nPress Admin to enter the administrator view.</string>
 
     <string name="warning">Warning: If you\'re not an admin and make changes, we\'ll know! And we\'ll find you! And ask you politely to change it back!</string>
 

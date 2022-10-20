@@ -28,6 +28,8 @@ public class TicketRequest {
         this.id = id;
     }
 
+    // The following getters/setters are unused at this point, but may be important in the future.
+
     public String getTicketsName() {
 
         return ticketsName;

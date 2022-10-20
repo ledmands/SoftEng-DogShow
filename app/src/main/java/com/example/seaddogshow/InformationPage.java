@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.metrics.Event;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,11 +40,12 @@ public class InformationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_page);
 
-        btnShowTrainers = findViewById(R.id.btnShowTrainers);
         lvInformation = findViewById(R.id.lvInformation);
+
+        btnGoHome = findViewById(R.id.btnGoHome);
+        btnShowTrainers = findViewById(R.id.btnShowTrainers);
         btnShowDogs = findViewById(R.id.btnShowDogs);
         btnShowEvents = findViewById(R.id.btnShowEvents);
-        btnGoHome = findViewById(R.id.btnGoHome);
         btnInfoTicketsLink = findViewById(R.id.btnInfoTicketsLink);
 
         btnGoHome.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +75,7 @@ public class InformationPage extends AppCompatActivity {
                             trainerList.add(trainer);
                         }
 
-                        ListAdapter adapter = new ListAdapter(InformationPage.this, trainerList);
+                        TrainerListAdapter adapter = new TrainerListAdapter(InformationPage.this, trainerList);
                         lvInformation.setAdapter(adapter);
                     }
 
@@ -86,7 +85,7 @@ public class InformationPage extends AppCompatActivity {
                     }
                 }));
             }
-        });
+        }); // end btnShowTrainers OnClickListener
 
         btnShowDogs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +116,7 @@ public class InformationPage extends AppCompatActivity {
                     }
                 }));
             }
-        });
+        }); // end btnShowDogs OnClickListener
 
         btnShowEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,7 +147,7 @@ public class InformationPage extends AppCompatActivity {
                     }
                 }));
             }
-        });
+        }); // end btnShowEvents OnClickListener
 
         btnInfoTicketsLink.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -158,5 +157,5 @@ public class InformationPage extends AppCompatActivity {
             }
         }));
 
-    }
+    } // end onCreate
 }

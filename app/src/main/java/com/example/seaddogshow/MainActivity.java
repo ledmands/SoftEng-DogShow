@@ -6,12 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnTickets;
     private Button btnInformation;
 
-    private TextView textWelcomeMessage;
-    private TextView textWarningMessage;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,24 +25,19 @@ public class MainActivity extends AppCompatActivity {
         btnAdmin = findViewById(R.id.btnAdmin);
         btnTickets = findViewById(R.id.btnTickets);
 
-        textWelcomeMessage = findViewById(R.id.textWelcomeMessage);
-        textWarningMessage = findViewById(R.id.textWarningMessage);
-
-
         btnAdmin.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AdminPage.class);
                 startActivity(intent);
-
             }
         }));
+
         btnTickets.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, TicketsPage.class);
                 startActivity(intent);
-
             }
         }));
 
@@ -62,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     } //end OnCreate
 

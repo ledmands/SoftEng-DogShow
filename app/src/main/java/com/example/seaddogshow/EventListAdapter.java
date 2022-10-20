@@ -20,7 +20,7 @@ public class EventListAdapter extends ArrayAdapter {
 
     public EventListAdapter(Activity mActivity, List<Events> eventList) {
 
-        super(mActivity, R.layout.event_list_item, eventList); // uses the list_item layout
+        super(mActivity, R.layout.event_list_item, eventList); // uses the event_list_item layout
         this.mActivity = mActivity;
         this.eventList = eventList;
     }

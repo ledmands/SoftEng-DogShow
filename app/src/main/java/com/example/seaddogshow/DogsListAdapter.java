@@ -19,7 +19,7 @@ public class DogsListAdapter extends ArrayAdapter {
 
     public DogsListAdapter(Activity mActivity, List<Dogs> dogsList){
 
-        super(mActivity, R.layout.dog_list_item,dogsList); // uses the list_item layout
+        super(mActivity, R.layout.dog_list_item,dogsList); // uses the dog_list_item layout
         this.mActivity = mActivity;
         this.dogsList = dogsList;
     }

@@ -34,8 +34,10 @@ public class TicketsPage extends AppCompatActivity {
         etTicketsName = findViewById(R.id.etTicketsName);
         etTicketsCC = findViewById(R.id.etTicketsCC);
         etTicketsEmail = findViewById(R.id.etTicketsEmail);
+
         btnTicketsSubmit = findViewById(R.id.btnTicketsSubmit);
         btnTicketsBack = findViewById(R.id.btnTicketsBack);
+
         dogShowDBRef = FirebaseDatabase.getInstance().getReference().child("tickets");
 
         btnTicketsBack.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +63,13 @@ public class TicketsPage extends AppCompatActivity {
         String creditCard = etTicketsCC.getText().toString();
         String numTickets = etTicketsNum.getText().toString();
         String email = etTicketsEmail.getText().toString();
+
         String id = dogShowDBRef.push().getKey();
 
         TicketRequest ticketrequest = new TicketRequest(id, ticketsName, numTickets, creditCard, email);
 
         dogShowDBRef.push().setValue(ticketrequest);
         Toast.makeText(com.example.seaddogshow.TicketsPage.this, "Ticket request submitted. Thank you!", Toast.LENGTH_SHORT).show();
-
 
     }
 }
