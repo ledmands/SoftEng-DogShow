@@ -30,6 +30,7 @@ public class InformationPage extends AppCompatActivity {
     private Button btnShowDogs;
     private Button btnShowEvents;
     private Button btnGoHome;
+    private Button btnInfoTicketsLink;
 
     private List<Trainer> trainerList;
     private List<Dogs> dogsList;
@@ -46,6 +47,7 @@ public class InformationPage extends AppCompatActivity {
         btnShowDogs = findViewById(R.id.btnShowDogs);
         btnShowEvents = findViewById(R.id.btnShowEvents);
         btnGoHome = findViewById(R.id.btnGoHome);
+        btnInfoTicketsLink = findViewById(R.id.btnInfoTicketsLink);
 
         btnGoHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +149,14 @@ public class InformationPage extends AppCompatActivity {
                 }));
             }
         });
+
+        btnInfoTicketsLink.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InformationPage.this, TicketsPage.class);
+                startActivity(intent);
+            }
+        }));
 
     }
 }

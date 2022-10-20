@@ -10,7 +10,7 @@
         android:id="@+id/btnInformation"
         android:layout_width="205dp"
         android:layout_height="82dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="268dp"
         android:text="Information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
